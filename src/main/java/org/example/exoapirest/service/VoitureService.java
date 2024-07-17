@@ -18,7 +18,9 @@ public class VoitureService {
     }
 
     public Voiture create(int id, String marque, int anneeFabrication, String couleur ) {
-        return new Voiture(id, marque, anneeFabrication, couleur);
+       Voiture voiture = new Voiture(id, marque, anneeFabrication, couleur);
+       voitures.add(voiture);
+       return voiture;
     }
 
     public List<Voiture> getVoitures() {
