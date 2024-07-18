@@ -28,12 +28,17 @@ public class VoitureService {
     }
 
     public Voiture getVoitureById(int id) {
-        for (Voiture voiture : voitures) {
-            if (voiture.getId() == id) {
-                return voiture;
-            }
-        }
-        return null;
+//        for (Voiture voiture : voitures) {
+//            if (voiture.getId() == id) {
+//                return voiture;
+//            }
+//        }
+//        return null;
+        return voitures
+                .stream()
+                .filter(voiture -> voiture.getId() == id)
+                .findFirst()
+                .get();
     }
 
     public boolean deleteVoiture(int id) {

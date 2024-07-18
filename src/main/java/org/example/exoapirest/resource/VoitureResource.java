@@ -10,6 +10,7 @@ import java.util.List;
 
 @Path("/car")
 @Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class VoitureResource {
 
     private final VoitureService voitureService;
@@ -20,7 +21,6 @@ public class VoitureResource {
     }
 
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
     public Voiture createVoiture(Voiture voiture) {
         return voitureService.create(voiture.getId(), voiture.getMarque(), voiture.getAnneeFabrication(), voiture.getCouleur());
     }
@@ -32,23 +32,26 @@ public class VoitureResource {
 
     @GET
     @Path("{id}")
-    public Voiture getVoitureById(@PathParam("id")int id) {
+    public Voiture getVoitureById(@PathParam("id") int id) {
         return voitureService.getVoitureById(id);
     }
-}
+
 
     @DELETE
 //    @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public boolean delete(@PathParam("id") int id){
+    public boolean delete(@PathParam("id") int id) {
         return voitureService.deleteVoiture(id);
     }
 
     @PUT
+    @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-public Voiture updateVoiture(Voiture voiture) {
-    return voitureService.updateVoiture(voiture);
+    public Voiture updateVoiture(Voiture voiture) {
+        return voitureService.updateVoiture(voiture);
     }
+
+}
 
 
 
