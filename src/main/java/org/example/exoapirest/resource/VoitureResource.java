@@ -19,13 +19,6 @@ public class VoitureResource {
         this.voitureService = voitureService;
     }
 
-//    @POST
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Voiture (@QueryParam("id") int id,@QueryParam("marque") String marque, @QueryParam("anneeFabrication") int anneeFabrication, @QueryParam("couleur") String couleur) {
-//        return voitureService.create(id, marque, anneeFabrication, couleur);
-//    }
-
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Voiture createVoiture(Voiture voiture) {
@@ -44,9 +37,18 @@ public class VoitureResource {
     }
 }
 
-//    @DELETE
-//@Path("{id}")
-//    public int delete(@PathParam("id") int id){
-//        return id;
-//    }
+    @DELETE
+//    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("{id}")
+    public boolean delete(@PathParam("id") int id){
+        return voitureService.deleteVoiture(id);
+    }
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+public Voiture updateVoiture(Voiture voiture) {
+    return voitureService.updateVoiture(voiture);
+    }
+
+
 

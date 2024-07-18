@@ -17,10 +17,10 @@ public class VoitureService {
         voitures.add(new Voiture(3, "ford", 2002, "jaune"));
     }
 
-    public Voiture create(int id, String marque, int anneeFabrication, String couleur ) {
-       Voiture voiture = new Voiture(id, marque, anneeFabrication, couleur);
-       voitures.add(voiture);
-       return voiture;
+    public Voiture create(int id, String marque, int anneeFabrication, String couleur) {
+        Voiture voiture = new Voiture(id, marque, anneeFabrication, couleur);
+        voitures.add(voiture);
+        return voiture;
     }
 
     public List<Voiture> getVoitures() {
@@ -36,12 +36,17 @@ public class VoitureService {
         return null;
     }
 
-//    public Voiture delete(int id) {
-//        for (Voiture voiture : voitures) {
-//            if (voiture.getId() == id) {
-//                v;
-//            }
-//        }
-//        return null;
-//    }
+    public boolean deleteVoiture(int id) {
+        voitures.removeIf(voiture -> voiture.getId() == id);
+        return true;
+
+    }
+
+    public Voiture updateVoiture(Voiture voiture) {
+        Voiture voituremaj = getVoitureById(voiture.getId());
+        voituremaj.setMarque(voiture.getMarque());
+        voituremaj.setAnneeFabrication(voiture.getAnneeFabrication());
+        voituremaj.setCouleur(voiture.getCouleur());
+        return voituremaj;
+    }
 }
